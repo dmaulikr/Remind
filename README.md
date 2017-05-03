@@ -5,4 +5,5 @@
 * 在`AppDelegate`中修改初始化SDK的appkey、apnsCertName
 * 修改target的bundle id，以及相关证书。
 * 路径`Remind2.x/EaseMobSDK/lib`下，复制一份2.xSDK静态库`libEaseMobClientSDK.a`
+* 推送服务请参考[推送集成](http://www.imgeek.org/article/825308748)
 * 此demo不做维护
