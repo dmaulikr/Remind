@@ -22,7 +22,6 @@
 */
 #define REMIND_AV
 
-#define USER_SENDER 1
 
 
 

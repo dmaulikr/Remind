@@ -59,14 +59,6 @@
     [_useIpSwitch setOn:[[EaseMob sharedInstance].chatManager isUseIp] animated:YES];
     
     self.title = NSLocalizedString(@"AppName", @"EaseMobDemo");
-    
-    self.passwordTextField.text = @"111111";
-    if (USER_SENDER) {
-        self.usernameTextField.text = @"sx001";
-    }
-    else {
-        self.usernameTextField.text = @"sx005";
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
