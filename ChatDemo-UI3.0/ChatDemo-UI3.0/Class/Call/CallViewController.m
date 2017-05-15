@@ -105,6 +105,8 @@
         _statusLabel.text = NSLocalizedString(@"call.connecting", @"Connecting...");
         [_actionView addSubview:_hangupButton];
     }
+    
+    [self _beginRing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -388,7 +390,7 @@
 - (void)_beginRing
 {
     [_ringPlayer stop];
-
+    
     NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"callRing" ofType:@"mp3"];
     NSURL *url = [[NSURL alloc] initFileURLWithPath:musicPath];
 
@@ -480,6 +482,8 @@
     if (_openGLView) {
         [_openGLView removeFromSuperview];
     }
+    
+    [self _stopRing];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [[AVAudioSession sharedInstance] setActive:NO error:nil];
@@ -601,7 +605,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }
     
     [self hideHud];
-    [self _stopRing];
     if(error){
 #ifdef REMIND_AV
         if (error.errorCode == EMErrorCallRemoteOffline) {
@@ -657,6 +660,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         else{
             _statusLabel.text = NSLocalizedString(@"call.speak", @"Can speak...");
         }
+        [self _stopRing];
         [[RemindAvManager manager] stopRunLoop];
         _timeLength = 0;
         _timeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeTimerAction:) userInfo:nil repeats:YES];

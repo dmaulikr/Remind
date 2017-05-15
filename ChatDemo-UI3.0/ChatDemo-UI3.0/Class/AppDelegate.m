@@ -72,7 +72,6 @@
         appkey = @"easemob-demo#chatdemoui";
         [ud setObject:appkey forKey:@"identifier_appkey"];
     }
-    
     [self easemobApplication:application
 didFinishLaunchingWithOptions:launchOptions
                       appkey:appkey
